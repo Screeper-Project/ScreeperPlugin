@@ -8,7 +8,7 @@ public class ScreeperPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		this.getLogger().info("Enabling Screeper...");
-		this.getServer().getPluginManager().registerEvents(new ScreeperListener(), this);
+		this.getServer().getPluginManager().registerEvents(new ScreeperListener("", this), this);
 		this.getLogger().info("Screeper Enabled !");
 	}
 	
