@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ScreeperListener implements Listener {
 	private URL url;
@@ -26,7 +27,19 @@ public class ScreeperListener implements Listener {
 	public void onJoin(PlayerJoinEvent e) {
 		try {
 			int code = ScreeperPluginUtils.httpPostRequest(url,
-					ScreeperPluginUtils.encodeToURL("type=joinEvent", "uuid=" + e.getPlayer().getUniqueId()));
+					ScreeperPluginUtils.encodeToURL("type=join", "uuid=" + e.getPlayer().getUniqueId()));
+			this.plugin.getLogger().log(Level.INFO, "The request " + url.toString() + " has returned " + code);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			this.plugin.getLogger().log(Level.WARNING, "The request to " + url.toString() + " has throwed an exception !");
+		}
+	}
+	
+	@EventHandler
+	public void onQuit(PlayerQuitEvent e) {
+		try {
+			int code = ScreeperPluginUtils.httpPostRequest(url,
+					ScreeperPluginUtils.encodeToURL("type=quit", "uuid=" + e.getPlayer().getUniqueId()));
 			this.plugin.getLogger().log(Level.INFO, "The request " + url.toString() + " has returned " + code);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
