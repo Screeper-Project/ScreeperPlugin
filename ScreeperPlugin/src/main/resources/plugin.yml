@@ -1,3 +1,9 @@
 name: ScreeperPlugin
 main: net.axelandre42.screeperplugin.ScreeperPlugin
 version: 0.0.1-SNAPSHOT
+commands:
+    screeper:
+        description: Main command for the plugin.
+        usage: /screeper [command] [args...]
+        permission: screeper.base
+        permission-message: You don't have the permission required.
