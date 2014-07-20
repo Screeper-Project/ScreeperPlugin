@@ -7,4 +7,4 @@ The bukkit plugin to communicate with the bundles.
 
 ###### Commands :
 
-- (Incomplete) `/screeper config [key] [value]` : Set a _value_ to a _key_ in the ScreeperPlugin's configuration.
+- `/screeper config [key] [value]` : Set a _value_ to a _key_ in the ScreeperPlugin's configuration.
