@@ -21,18 +21,9 @@ public class ScreeperPlugin extends JavaPlugin {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("screeper")) {
-			if (args[0].equalsIgnoreCase("config") && sender.hasPermission("screeper.config")) {
-				if (args.length == 3) {
-					this.getConfig().set(args[1], args[2]);
-					this.saveConfig();
-					sender.sendMessage("Successfully set this configuration node !");
-					return true;
-				} else {
-					sender.sendMessage("Arguments length is not valid.");
-					return false;
-				}
-			}
+		if (cmd.getName().equalsIgnoreCase("scurl") && sender.hasPermission("screeper.url")) {
+			this.getConfig().set("web.url", args[0]);
+			return true;
 		}
 		return false;
 	}
