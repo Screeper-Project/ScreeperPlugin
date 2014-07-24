@@ -39,7 +39,7 @@ public class ScreeperListener implements Listener {
 	public void onQuit(PlayerQuitEvent e) {
 		try {
 			int code = ScreeperPluginUtils.httpPostRequest(url,
-					ScreeperPluginUtils.encodeToURL("type=quit", "uuid=" + e.getPlayer().getUniqueId()));
+					ScreeperPluginUtils.encodeToURL("type=quit", "dName=" + e.getPlayer().getDisplayName()));
 			this.plugin.getLogger().log(Level.INFO, "The request " + url.toString() + " has returned " + code);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
