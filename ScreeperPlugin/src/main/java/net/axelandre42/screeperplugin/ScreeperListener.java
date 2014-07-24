@@ -34,7 +34,7 @@ public class ScreeperListener implements Listener {
 			this.plugin.getLogger().log(Level.WARNING, "The request to " + url.toString() + " has throwed an exception !");
 		}
 	}
-	
+	/*
 	@EventHandler
 	public void onQuit(PlayerQuitEvent e) {
 		try {
@@ -46,4 +46,5 @@ public class ScreeperListener implements Listener {
 			this.plugin.getLogger().log(Level.WARNING, "The request to " + url.toString() + " has throwed an exception !");
 		}
 	}
+	*/
 }
