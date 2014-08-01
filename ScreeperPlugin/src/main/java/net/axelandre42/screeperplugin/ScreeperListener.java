@@ -25,7 +25,11 @@ public class ScreeperListener implements Listener {
 		OutputStreamWriter osw = null;
 		try {
 			osw = new OutputStreamWriter(new FileOutputStream(jf));
-			
+			byte[] addr = e.getPlayer().getAddress().getAddress().getAddress();
+			String str = new String(new Date().getTime() + ":" + e.getPlayer().getUniqueId().toString() + ":" + e.getPlayer().getName() + ":" + addr[0] + "." + addr[1] + "." + addr[2] + "." + addr[3]);
+			osw.write(str);
+			osw.flush();
+			plugin.getLogger().info(str);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			try {
@@ -34,10 +38,6 @@ public class ScreeperListener implements Listener {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
-			onJoin(e);
-		}
-		try {
-			osw.write(new Date().getTime() + ":" + e.getPlayer().getUniqueId().toString() + ":" + e.getPlayer().getName() + ":" + e.getPlayer().getAddress().getHostName());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
