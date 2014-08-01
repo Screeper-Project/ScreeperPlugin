@@ -21,23 +21,22 @@ public class ScreeperListener implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
 		File df = this.plugin.getDataFolder();
-		File jf = new File(df.getAbsolutePath()+File.separator+"file.txt");
+		File jf = new File(df.getAbsolutePath()+File.separator+"connects.txt");
 		OutputStreamWriter osw = null;
 		try {
 			osw = new OutputStreamWriter(new FileOutputStream(jf));
 			byte[] addr = e.getPlayer().getAddress().getAddress().getAddress();
-			String str = new String(new Date().getTime() + ":" + e.getPlayer().getUniqueId().toString() + ":" + e.getPlayer().getName() + ":" + addr[0] + "." + addr[1] + "." + addr[2] + "." + addr[3]);
-			osw.write(str);
-			osw.flush();
+			String str = new String(new Date().getTime() + ":" + e.getPlayer().getUniqueId().toString() + ":" + e.getPlayer().getName() + ":" + addr[0] + "." + addr[1] + "." + addr[2] + "." + addr[3] + "\r");
+			char[] ch = str.toCharArray();
+			for (int i = 0; i > ch.length; i++) {
+				osw.append(ch[i]);
+				osw.flush();
+			}
+			
 			plugin.getLogger().info(str);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
-			try {
-				jf.createNewFile();
-			} catch (IOException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
+			e1.printStackTrace();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
