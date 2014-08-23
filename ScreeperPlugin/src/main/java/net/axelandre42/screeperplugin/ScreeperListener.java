@@ -24,23 +24,19 @@ public class ScreeperListener implements Listener
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) 
 	{
-		File df = this.plugin.getDataFolder();
-		String fp = new File(df.getAbsolutePath() + File.separator + "connects.txt");
-
-		FileWriter fw = new FileWriter(fp, true);
-
-		OutputStreamWriter osw = null;
 		try 
 		{
+			File df = this.plugin.getDataFolder();
+			String fp = df.getAbsolutePath() + File.separator + "connects.txt";
+
+			FileWriter fw = new FileWriter(fp, true);
+
 			byte[] addr = e.getPlayer().getAddress().getAddress().getAddress();
-			String data = new String(new Date().getTime() + ":" + e.getPlayer().getUniqueId().toString() + ":" + e.getPlayer().getName() + ":" + addr[0] + "." + addr[1] + "." + addr[2] + "." + addr[3] + "\r");
+			String data = new String(new Date().getTime() + ":" + e.getPlayer().getUniqueId().toString() + ":" + e.getPlayer().getName() + ":" + addr[0] + "." + addr[1] + "." + addr[2] + "." + addr[3] + "\r\n");
 
 			fw.write(data); 
 			fw.flush();
 			fw.close();
-
-			plugin.getLogger().info('Enregistrement de la ligne :' + data);
-			plugin.getLogger().info('Cette ligne a été enregistré dans le fichier : ' + jf.getAbsolutePath());
 		} 
 		catch (FileNotFoundException e1) 
 		{
